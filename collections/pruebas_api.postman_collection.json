@@ -90,7 +90,7 @@
 							"    pm.expect(json.id).to.eql(13);",
 							"});",
 							"pm.test(\"Email correcto\", ()=>{",
-							"    pm.expect(json.email).to.eql(\"noah.hernandez@x.dummy.com\");",
+							"    pm.expect(json.email).to.eql(\"noah.hernandez@x.dummyjson.com\");",
 							"});"
 						],
 						"type": "text/javascript",
