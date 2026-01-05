@@ -1,0 +1,48 @@
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Newman / Reports
+# =========================
+reports/
+*.xml
+*.html
+
+# (Si quieres versionar SOLO el HTML final, dime y lo ajustamos)
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDEs
+# =========================
+.vscode/
+.idea/
+*.swp
+
+# =========================
+# Jenkins (local)
+# =========================
+.jenkins/
