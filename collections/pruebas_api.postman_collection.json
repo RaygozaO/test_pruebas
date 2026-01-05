@@ -59,6 +59,18 @@
 							"language": "json"
 						}
 					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
 				}
 			},
 			"response": []
