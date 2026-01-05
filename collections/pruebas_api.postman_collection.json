@@ -187,6 +187,32 @@
 		},
 		{
 			"name": "Ingreso con token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Usuario autenticado\", () => {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const json = pm.response.json();",
+							"",
+							"pm.test(\"ID existe\", () => {",
+							"  pm.expect(json.id).to.eql(13);",
+							"});",
+							"",
+							"pm.test(\"Email correcto\", () => {",
+							"  pm.expect(json.email).to.eql(\"noah.hernandez@x.dummyjson.com\");",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -202,6 +228,57 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"username\": \"noahh\",\n  \"password\": \"noahhpass\"\n}"
+				},
+				"url": {
+					"raw": "https://dummyjson.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sin_username",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Sin username\", function () {",
+							"    const json = pm.response.json();",
+							"    pm.expect(json.message).to.eql(\"Username and password required\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"\",\n  \"password\": \"noahhpass\"\n}"
 				},
 				"url": {
 					"raw": "https://dummyjson.com/auth/login",
