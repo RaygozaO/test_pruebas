@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "PruebasDummy",
+			"name": "Login_ok",
 			"event": [
 				{
 					"listen": "test",
@@ -21,136 +21,15 @@
 							"const json = pm.response.json();",
 							"",
 							"pm.test(\"accessToken existe\", () => {",
-							"  pm.expect(json).to.have.property(\"accessToken\");",
-							"});",
-							"",
-							"pm.test(\"accessToken no vacío\", () => {",
-							"  pm.expect(json.accessToken).to.not.be.empty;",
-							"});",
-							"",
-							"pm.test(\"accessToken es string\", () => {",
 							"  pm.expect(json.accessToken).to.be.a(\"string\");",
 							"});",
 							"",
-							"pm.test(\"Username correcto\", () => {",
+							"pm.test(\"username correcto\", () => {",
 							"  pm.expect(json.username).to.eql(\"noahh\");",
 							"});",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"username\": \"noahh\",\n  \"password\": \"noahhpass\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dummyjson.com/auth/login",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"auth",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PruebaFalsa",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 400\", function () {",
-							"    pm.response.to.have.status(400);",
-							"})",
-							"const json = pm.response.json();",
-							"pm.test(\"Mensaje de error correcto\", ()  =>{",
-							"    pm.expect(json.message).to.eql(\"Username and password required\");",
-							"})"
-						],
-						"type": "text/javascript",
-						"packages": {},
-						"requests": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"email\": \"eve.holt@reqres.in\"\n}\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dummyjson.com/auth/login",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"auth",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Obtener_Token",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const json = pm.response.json();",
+							"",
 							"pm.environment.set(\"accessToken\", json.accessToken);",
-							"",
-							"pm.environment.get(\"accessToken\");"
+							""
 						],
 						"type": "text/javascript",
 						"packages": {},
@@ -160,7 +39,18 @@
 			],
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"username\": \"noahh\",\n  \"password\": \"noahhpass\"\n}",
@@ -169,43 +59,27 @@
 							"language": "json"
 						}
 					}
-				},
-				"url": {
-					"raw": "https://dummyjson.com/auth/login",
-					"protocol": "https",
-					"host": [
-						"dummyjson",
-						"com"
-					],
-					"path": [
-						"auth",
-						"login"
-					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Ingreso con token",
+			"name": "Auth_me",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Usuario autenticado\", () => {",
-							"  pm.response.to.have.status(200);",
+							"pm.test(\"Usuario autenticado\", () =>{",
+							"    pm.response.to.have.status(200);",
 							"});",
-							"",
 							"const json = pm.response.json();",
-							"",
-							"pm.test(\"ID existe\", () => {",
-							"  pm.expect(json.id).to.eql(13);",
+							"pm.test(\"ID esperado\", () =>{",
+							"    pm.expect(json.id).to.eql(13);",
 							"});",
-							"",
-							"pm.test(\"Email correcto\", () => {",
-							"  pm.expect(json.email).to.eql(\"noah.hernandez@x.dummyjson.com\");",
-							"});",
-							""
+							"pm.test(\"Email correcto\", ()=>{",
+							"    pm.expect(json.email).to.eql(\"noah.hernandez@x.dummy.com\");",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {},
@@ -213,24 +87,27 @@
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
 					{
 						"key": "Authorization",
 						"value": "Bearer {{accessToken}}",
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"username\": \"noahh\",\n  \"password\": \"noahhpass\"\n}"
-				},
 				"url": {
-					"raw": "https://dummyjson.com/auth/login",
+					"raw": "https://dummyjson.com/auth/me",
 					"protocol": "https",
 					"host": [
 						"dummyjson",
@@ -238,7 +115,7 @@
 					],
 					"path": [
 						"auth",
-						"login"
+						"me"
 					]
 				}
 			},
@@ -251,9 +128,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Sin username\", function () {",
-							"    const json = pm.response.json();",
-							"    pm.expect(json.message).to.eql(\"Username and password required\");",
+							"pm.test(\"Error 400\", () => {",
+							"    pm.expect(pm.response.code).to.eql(400); // Expecting a 400 Bad Request error",
 							"});"
 						],
 						"type": "text/javascript",
@@ -278,7 +154,68 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"\",\n  \"password\": \"noahhpass\"\n}"
+					"raw": "{\n    \"username\": \"no_existe\",\n    \"password\": \"incorrecta\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dummyjson.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"dummyjson",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sin_password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"No trae password\", () => {",
+							"    pm.response.to.have.status(400);",
+							"    pm.expect(pm.response.json().message).to.eql(\"Username and password required\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"noahh\",\n    \"password\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "https://dummyjson.com/auth/login",
