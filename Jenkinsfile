@@ -47,7 +47,8 @@ pipeline {
         reportName: 'Newman API Test Report',
         keepAll: true,
         alwaysLinkToLastBuild: true,
-        allowMissing: false
+        allowMissing: false,
+        useWrapperFileDirectly: true
       ])
     }
 
