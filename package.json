@@ -1,15 +1,11 @@
 {
   "name": "api-test",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "private": true,
   "type": "commonjs",
+  "scripts": {
+    "test:api": "newman run collections/pruebas_api.postman_collection.json -e env/QA.postman_environment.json -r cli,htmlextra,junit --reporter-htmlextra-export reports/report.html --reporter-junit-export reports/report.xml"
+  },
   "devDependencies": {
     "newman": "^6.2.1",
     "newman-reporter-htmlextra": "^1.23.1"

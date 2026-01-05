@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="pruebas_api" tests="4" time="0.881">
+  <testsuite name="PruebasDummy" id="4e9c7a28-80cb-467d-8b10-54fc52de6ff8" timestamp="2025-12-31T23:38:29.288Z" tests="5" failures="0" errors="0" time="0.609">
+    <testcase name="HTTP 200 OK" time="0.609" classname="PruebasDummy"/>
+    <testcase name="accessToken existe" time="0.609" classname="PruebasDummy"/>
+    <testcase name="accessToken no vacío" time="0.609" classname="PruebasDummy"/>
+    <testcase name="accessToken es string" time="0.609" classname="PruebasDummy"/>
+    <testcase name="Username correcto" time="0.609" classname="PruebasDummy"/>
+  </testsuite>
+  <testsuite name="PruebaFalsa" id="17452b7e-0de6-4efc-a421-30d989fd9e3d" timestamp="2025-12-31T23:38:29.288Z" tests="2" failures="1" errors="0" time="0.090">
+    <testcase name="Status code is 400" time="0.090" classname="PruebaFalsa"/>
+    <testcase name="Mensaje de error correcto" time="0.090" classname="PruebaFalsa">
+      <failure type="AssertionFailure" message="expected 'Username and password required' to deeply equal 'Username and password requireds'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 55088ece-379d-4316-a2c5-133b68b31a6e.]]>
+        <![CDATA[Collection name: pruebas_api.]]>
+        <![CDATA[Request name: PruebaFalsa.]]>
+        <![CDATA[Test description: Mensaje de error correcto.]]>
+        <![CDATA[Error message: expected 'Username and password required' to deeply equal 'Username and password requireds'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 'Username and password required' to deeply equal 'Username and password requireds'
+   at Object.eval sandbox-script.js:2:2).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Obtener_Token" id="3b70f698-dec7-4eef-9afa-0df6b0b6b4eb" timestamp="2025-12-31T23:38:29.288Z" tests="0" failures="0" errors="0" time="0.090"/>
+  <testsuite name="Ingreso con token" id="c4ece071-bd7d-46c6-845a-b2481b6eec38" timestamp="2025-12-31T23:38:29.288Z" tests="0" failures="0" errors="0" time="0.092"/>
+</testsuites>
