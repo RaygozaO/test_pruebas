@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "type": "commonjs",
+  
   "scripts": {
-    "test:api": "newman run collections/pruebas_api.postman_collection.json -e env/QA.postman_environment.json -r cli,htmlextra,junit --reporter-htmlextra-export reports/report.html --reporter-junit-export reports/report.xml"
+    "test:api": "newman run collections/pruebas_api.postman_collection.json -e env/QA.postman_environment.json -r cli,htmlextra,junit --reporter-htmlextra-export reports/index.html"
   },
   "devDependencies": {
     "newman": "^6.2.1",
     "newman-reporter-htmlextra": "^1.23.1"
   }
 }
+
