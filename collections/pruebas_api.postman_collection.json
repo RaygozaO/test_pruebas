@@ -93,7 +93,7 @@
 							"})",
 							"const json = pm.response.json();",
 							"pm.test(\"Mensaje de error correcto\", ()  =>{",
-							"    pm.expect(json.message).to.eql(\"Username and password requireds\");",
+							"    pm.expect(json.message).to.eql(\"Username and password required\");",
 							"})"
 						],
 						"type": "text/javascript",
